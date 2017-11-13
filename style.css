@@ -7,12 +7,12 @@ html {
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   grid-gap: 10px;
+  width: fit-content;
   margin: auto;
 }
 
 .square {
   background-color: white;
-  box-shadow: 1px 2px 2px 1px rgba(#000000, 0.43);
   display: flex;
   justify-content: center;
   align-items: center;
