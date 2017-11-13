@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var dia2 = [position13, position22, position31];
 
 
-  var winstates = [row1]
+  var winstates = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 
 
 
@@ -51,7 +51,7 @@ function playerwins(player) {
   winstates.forEach( function(winstate) {
     if (winstate[0].innerText === player && winstate[1].innerText === player && winstate[2].innerText === player){
       var winner = document.createElement('h1');
-      winner.innerText = player + 'Wins!!!';
+      winner.innerText = 'Player ' + player + ' Wins!!!';
       document.querySelector('body').appendChild(winner);
     }
   })
