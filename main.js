@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+  var turn = 1;
+
   var board = document.querySelector('.board');
   var squares = document.querySelectorAll('.square');
-  var turn = 1;
 
   var position11 = document.querySelector('.position1-1');
   var position12 = document.querySelector('.position1-2');
@@ -38,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
   function makeMark(e) {
     if (e.target.innerText != "" ) return
       e.target.innerText = checkTurn();
-      turn ++;
       playerWins(checkTurn());
+      turn ++;
   };
 
   board.addEventListener('click', makeMark)
