@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var row2 = [position21, position22, position23];
   var row3 = [position31, position32, position33];
 
+  var col1 = [position12, position22, position32];
+  var col2 = [position12, position22, position32];
+  var col3 = [position13, position23, position33];
+
+  var dia1 = [position11, position22, position33];
+  var dia2 = [position13, position22, position31];
+
+
   var winstates = [row1]
 
 
@@ -42,7 +50,9 @@ board.addEventListener('click', makeMark)
 function playerwins(player) {
   winstates.forEach( function(winstate) {
     if (winstate[0].innerText === player && winstate[1].innerText === player && winstate[2].innerText === player){
-
+      var winner = document.createElement('h1');
+      winner.innerText = player + 'Wins!!!';
+      document.querySelector('body').appendChild(winner);
     }
   })
 }
