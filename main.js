@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var row2 = [position21, position22, position23];
   var row3 = [position31, position32, position33];
 
-  var col1 = [position12, position22, position32];
+  var col1 = [position11, position21, position31];
   var col2 = [position12, position22, position32];
   var col3 = [position13, position23, position33];
 
@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var dia2 = [position13, position22, position31];
 
 
-  var winstates = [row1, row2, row3, col1, col2, col3, dia1, dia2];
-
-
+  var winStates = [row1, row2, row3, col1, col2, col3, dia1, dia2];
 
   function checkTurn() {
     if (turn % 2 === 0) {
@@ -37,22 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  function makeMark(e) {
+    if (e.target.innerText != "" ) return
+      e.target.innerText = checkTurn();
+      turn ++;
+      playerWins(checkTurn());
+  };
 
-function makeMark(e) {
-  if (e.target.innerText != "" ) return
-    e.target.innerText = checkTurn();
-    turn ++;
-    e.target.removeEventListener('click', makeMark);
-};
+  board.addEventListener('click', makeMark)
 
-board.addEventListener('click', makeMark)
+  function playerWins(player) {
+    winStates.forEach( function(winstate)  {
+      if (winstate[0].innerText === player &&
+          winstate[1].innerText === player &&
+          winstate[2].innerText === player) {
 
-function playerwins(player) {
-  winstates.forEach( function(winstate) {
-    if (winstate[0].innerText === player && winstate[1].innerText === player && winstate[2].innerText === player){
-      var winner = document.createElement('h1');
-      winner.innerText = 'Player ' + player + ' Wins!!!';
-      document.querySelector('body').appendChild(winner);
+        board.removeEventListener('click', makeMark);
+
+        var winner = document.createElement('h1');
+        winner.innerText = 'Player ' + player + ' Wins!!!';
+        document.querySelector('body').appendChild(winner);
     }
   })
 }
