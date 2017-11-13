@@ -4,20 +4,20 @@ var board = document.querySelector('.board');
 var squares = document.querySelectorAll('.square');
 var turn = 1;
 
-function checkTurn(){
+
+function checkTurn() {
   if (turn % 2 === 0) {
     return 'O';
   } else {
     return 'X';
   }
-}
+};
 
-board.addEventListener('click', function(e) {
-
-  e.target.innerText = checkTurn();
-  turn ++;
-})
-
+function makeMark(e) {
+  if (e.target.innerText != "" ) return
+    e.target.innerText = checkTurn();
+    turn ++;
+};
 
 
 
