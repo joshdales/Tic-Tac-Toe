@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var turn = 1;
 
   var board = document.querySelector('.board');
-  var squares = [document.querySelectorAll('.square')];
+  var squares = document.querySelectorAll('.square');
 
   var winner = document.createElement('h1');
   document.querySelector('body').appendChild(winner);
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   board.addEventListener('click', makeMark)
 
-  var allSquares = Array.from(squares).map(square) => square.length === 1);
+  var allSquares = Array.from(squares).map(square => square.length === 1);
   function checkIfTrue(square) {
     square === true
   }
