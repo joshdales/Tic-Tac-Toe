@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var board = document.querySelector('.board');
   var squares = document.querySelectorAll('.square');
 
+  var winner = document.createElement('h1');
+  document.querySelector('body').appendChild(winner);
+
   var position11 = document.querySelector('.position1-1');
   var position12 = document.querySelector('.position1-2');
   var position13 = document.querySelector('.position1-3');
@@ -52,12 +55,16 @@ document.addEventListener('DOMContentLoaded', function() {
           winstate[2].innerText === player) {
 
         board.removeEventListener('click', makeMark);
-
-        var winner = document.createElement('h1');
         winner.innerText = 'Player ' + player + ' Wins!!!';
-        document.querySelector('body').appendChild(winner);
-    }
-  })
-}
+
+      } else if (winstate[0].innerText.length === 1 &&
+        winstate[1].innerText.length === 1 &&
+        winstate[2].innerText.length === 1) {
+
+          winner.innerText = 'No one wins';
+        }
+    })
+  }
+
 
 })
