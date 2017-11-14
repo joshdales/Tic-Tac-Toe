@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var turn = 1;
 
   var board = document.querySelector('.board');
-  var squares = document.querySelectorAll('.square');
+  var squares = [document.querySelectorAll('.square')];
 
   var winner = document.createElement('h1');
   document.querySelector('body').appendChild(winner);
@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   board.addEventListener('click', makeMark)
 
+  var allSquares = Array.from(squares).map(square) => square.length === 1);
+  function checkIfTrue(square) {
+    square === true
+  }
+
   function playerWins(player) {
     winStates.forEach( function(winstate)  {
       if (winstate[0].innerText === player &&
@@ -57,12 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
         board.removeEventListener('click', makeMark);
         winner.innerText = 'Player ' + player + ' Wins!!!';
 
-      } else if (winstate[0].innerText.length === 1 &&
-        winstate[1].innerText.length === 1 &&
-        winstate[2].innerText.length === 1) {
-
-          winner.innerText = 'No one wins';
-        }
+      } if (allSquares.every(checkIfTrue)) {
+        winner.innerText = "Draw!"
+      }
     })
   }
 
